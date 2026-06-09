@@ -4,11 +4,11 @@
 // orphaned CSS/JS bundle into dist/_astro that no page links — but it would still
 // sit publicly in the directory and leak the unfinished design system. Remove it.
 //
-// In full-site mode (SITE_WIP=false) the bundle is referenced by the real pages,
-// so we leave dist untouched.
+// In full-site mode (the default) the bundle is referenced by the real pages,
+// so we leave dist untouched. Set SITE_WIP=true to enable the placeholder gate.
 import { rmSync, existsSync } from 'node:fs';
 
-const WIP = (process.env.SITE_WIP ?? 'true') !== 'false';
+const WIP = process.env.SITE_WIP === 'true';
 
 if (WIP && existsSync('dist/_astro')) {
   rmSync('dist/_astro', { recursive: true, force: true });

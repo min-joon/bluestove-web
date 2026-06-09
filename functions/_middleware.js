@@ -8,7 +8,7 @@ export async function onRequest(context) {
 
   // While WIP is on, do not redirect — serve the placeholder as-is. The real
   // language pages aren't built, so a redirect would only land on a 404.
-  const wip = (env?.SITE_WIP ?? 'true') !== 'false';
+  const wip = env?.SITE_WIP === 'true';
   if (wip) return next();
 
   const url = new URL(request.url);
