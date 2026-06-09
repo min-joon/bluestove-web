@@ -1,0 +1,1007 @@
+---
+import { brand, type Lang } from '../i18n/ui';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+
+const content = {
+  en: {
+    nav: {
+      founder: 'Founder',
+      business: 'Business Area',
+      personnel: 'Key Personnel',
+      contact: 'Contact Us',
+    },
+    hero: {
+      eyebrow: 'Future Tech Operating Company',
+      title: 'Bluestove',
+      slogan: 'An enduring flame with a future mind.',
+      lead:
+        'A holding-style operating company that builds future ecosystems with real capabilities in data centre PM and consulting.',
+      primary: "Let's Make it Happen",
+      secondary: 'View Business Area',
+    },
+    philosophy: {
+      eyebrow: 'Brand Philosophy',
+      title: 'Calm on the surface, a gathered heat within.',
+      quote:
+        'The stove was humanity’s first internal engine and power plant. It contained intense heat inside a mechanical vessel and turned scattered fire into usable power.',
+      motto:
+        'Give us infrastructure, land, and power. We build whatever comes next, ourselves.',
+      beats: [
+        {
+          label: 'Blue',
+          text: 'Intellectual future technology, the ocean, space, and the spirit of exploration.',
+        },
+        {
+          label: 'Stove',
+          text: 'The first power plant that sparked every industrial revolution by containing heat.',
+        },
+        {
+          label: 'Make it happen',
+          text: 'Not passive investment, but direct operation through PM, consulting, and execution.',
+        },
+      ],
+    },
+    founder: {
+      eyebrow: 'Founder',
+      title: 'An operating company with real capabilities.',
+      lead:
+        'Built around project management, consulting, and operating discipline, Bluestove turns future infrastructure into a working ecosystem.',
+      body:
+        'Data centres, robotics, AI, space technology, and smart farms are not separate slogans here. They are the connected pillars of one future-tech ecosystem.',
+      name: 'Hur, Young Soo',
+      role: 'President, Bluestove',
+    },
+    business: {
+      eyebrow: 'Business Area',
+      title: 'What Bluestove builds itself',
+      lead:
+        'Anchored in data centre PM and consulting, extending into future technology operations.',
+      areas: [
+        ['01', 'Data Centre PM', 'Design, construction, operation, and project control when land, power, and infrastructure are ready.'],
+        ['02', 'Consulting', 'Execution-grade consulting that connects future-tech infrastructure investment with commercialization.'],
+        ['03', 'Robotics', 'Physical automation for industrial sites, data centres, and infrastructure operations.'],
+        ['04', 'Artificial Intelligence', 'The compute and intelligence layer that turns infrastructure into value.'],
+        ['05', 'Space Technology', 'A long-term frontier connected to exploration, communications, and future infrastructure.'],
+        ['06', 'Smart Farm', 'Production infrastructure where energy, automation, and data meet.'],
+      ],
+    },
+    personnel: {
+      eyebrow: 'Key Personnel',
+      title: 'The people who hold the flame.',
+      lead: 'Profiles can be revealed in sequence while the page keeps the core message intact.',
+      people: [
+        ['Hur, Young Soo', 'President', 'Sets the direction for Bluestove and the Make it happen philosophy.'],
+        ['Placeholder', 'Role Placeholder', 'Profile placeholder for the person responsible for execution across data centre PM, consulting delivery, and future technology operations.'],
+        ['Placeholder', 'Role Placeholder', 'Profile placeholder for the person responsible for strategic partnerships, business development, and commercialization planning.'],
+      ],
+    },
+    contact: {
+      eyebrow: 'Contact Us',
+      title: "Let's Make it Happen.",
+      lead:
+        'For conversations around sites, power, infrastructure, or future technology operations, Bluestove welcomes thoughtful introductions and project inquiries.',
+      name: 'Name / Company',
+      email: 'Email',
+      message: 'Tell us about the opportunity',
+      submit: 'Send message',
+    },
+  },
+  ko: {
+    nav: {
+      founder: 'Founder',
+      business: 'Business Area',
+      personnel: 'Key Personnel',
+      contact: 'Contact Us',
+    },
+    hero: {
+      eyebrow: 'Future Tech Operating Company',
+      title: 'Bluestove',
+      slogan: 'An enduring flame with a future mind.',
+      lead:
+        '데이터센터 PM과 컨설팅이라는 실체를 바탕으로, 미래 기술 생태계를 직접 구축하는 홀딩 성격의 오퍼레이팅 컴퍼니.',
+      primary: "Let's Make it Happen",
+      secondary: '사업 영역 보기',
+    },
+    philosophy: {
+      eyebrow: 'Brand Philosophy',
+      title: '겉은 잔잔하나, 안에는 갈무리된 열이 있다.',
+      quote:
+        '스토브는 인류 최초의 내연기관이자 발전소입니다. 기계적 컨테이너 안에 강력한 열을 가두어, 흩어지던 불을 쓸 수 있는 힘으로 바꾸었습니다.',
+      motto: '인프라, 땅, 전력이 있다면 우리가 무엇이든 직접 다 만들어 낸다.',
+      beats: [
+        {
+          label: 'Blue',
+          text: '인텔렉추얼, 미래 기술, 바다와 우주를 향한 무한한 가능성과 탐구 정신.',
+        },
+        {
+          label: 'Stove',
+          text: '열을 가두어 힘을 발견하게 한 최초의 발전소이자 산업혁명의 시발점.',
+        },
+        {
+          label: 'Make it happen',
+          text: '단순 투자가 아니라 PM, 컨설팅, 실행 역량으로 직접 만들어 내는 운영.',
+        },
+      ],
+    },
+    founder: {
+      eyebrow: 'Founder',
+      title: '실체 있는 역량으로 움직이는 오퍼레이팅 컴퍼니.',
+      lead:
+        '프로젝트 매니지먼트, 컨설팅, 운영 역량을 바탕으로 미래 인프라를 실제 생태계로 전환합니다.',
+      body:
+        '데이터센터, 로봇, AI, 우주기술, 스마트팜은 따로 떨어진 구호가 아니라 하나의 미래 기술 생태계를 이루는 축입니다.',
+      name: 'Hur, Young Soo',
+      role: 'President, Bluestove',
+    },
+    business: {
+      eyebrow: 'Business Area',
+      title: '블루스토브가 직접 만드는 영역',
+      lead: '데이터센터 PM과 컨설팅을 본진으로, 미래 기술 운영 영역까지 확장합니다.',
+      areas: [
+        ['01', 'Data Centre PM', '부지, 전력, 인프라가 준비되면 설계부터 구축, 운영까지 프로젝트를 직접 책임집니다.'],
+        ['02', 'Consulting', '미래 기술 인프라 투자와 사업화를 잇는 실행형 컨설팅을 제공합니다.'],
+        ['03', 'Robotics', '산업 현장, 데이터센터, 인프라 운영을 잇는 물리 세계의 자동화 역량입니다.'],
+        ['04', 'Artificial Intelligence', '인프라를 가치로 바꾸는 연산과 지능의 레이어입니다.'],
+        ['05', 'Space Technology', '탐구 정신, 통신, 미래 인프라와 연결되는 장기 프론티어입니다.'],
+        ['06', 'Smart Farm', '에너지, 자동화, 데이터가 만나는 차세대 생산 인프라입니다.'],
+      ],
+    },
+    personnel: {
+      eyebrow: 'Key Personnel',
+      title: '불꽃을 갈무리한 사람들.',
+      lead: '프로필은 순차적으로 공개하되, 페이지의 핵심 메시지는 지금부터 검토할 수 있습니다.',
+      people: [
+        ['Hur, Young Soo', 'President', '블루스토브의 방향과 Make it happen 철학을 이끄는 창립자.'],
+        ['Placeholder', 'Role Placeholder', '데이터센터 PM, 컨설팅 딜리버리, 미래 기술 운영 실행을 담당할 인물의 프로필 자리입니다.'],
+        ['Placeholder', 'Role Placeholder', '전략적 파트너십, 사업 개발, 사업화 기획을 담당할 인물의 프로필 자리입니다.'],
+      ],
+    },
+    contact: {
+      eyebrow: 'Contact Us',
+      title: "Let's Make it Happen.",
+      lead: '부지, 전력, 인프라, 미래 기술 운영과 관련된 논의를 편하게 남겨주세요. 검토 후 적절한 방식으로 이어가겠습니다.',
+      name: '이름 / 회사',
+      email: '이메일',
+      message: '논의하고 싶은 기회나 배경을 남겨주세요',
+      submit: '글 남기기',
+    },
+  },
+}[lang];
+
+const links = [
+  { href: '#founder', label: content.nav.founder },
+  { href: '#business', label: content.nav.business },
+  { href: '#personnel', label: content.nav.personnel },
+  { href: '#contact', label: content.nav.contact },
+];
+---
+
+<div class="landing-page" data-bluestove-landing>
+  <header class="site-header" aria-label="Bluestove">
+    <a class="wordmark brand-mark" href="#top" aria-label="Bluestove">
+      <span class="w-blue">Blue</span><span class="w-stove">stove</span>
+    </a>
+
+    <nav class="main-nav" aria-label="Primary">
+      {links.map((link) => <a href={link.href}>{link.label}</a>)}
+    </nav>
+
+    <!-- Korean copy is intentionally kept in this component for future reuse, but
+      only the English route is exposed for now. Do not re-add EN/KO switches
+      unless /ko/ routing is restored in src/pages/[lang]/index.astro. -->
+  </header>
+
+  <section class="hero-section" id="top" aria-labelledby="hero-title">
+    <div class="hero-inner">
+      <div class="hero-copy">
+        <p class="announcement">{content.hero.eyebrow}</p>
+        <h1 id="hero-title">{content.hero.slogan}</h1>
+        <p class="hero-lead">{content.hero.lead}</p>
+
+        <div class="hero-actions">
+          <a class="button primary" href="#contact">{content.hero.primary}</a>
+          <a class="button secondary" href="#business">{content.hero.secondary}</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="philosophy-strip" id="philosophy" aria-labelledby="philosophy-title">
+    <div class="section-inner philosophy-inner reveal">
+      <div>
+        <p class="eyebrow-line">{content.philosophy.eyebrow}</p>
+        <h2 id="philosophy-title">{content.philosophy.title}</h2>
+      </div>
+      <div class="philosophy-text">
+        <p>{content.philosophy.quote}</p>
+        <strong>{content.philosophy.motto}</strong>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-band story-band" aria-label="Bluestove meaning">
+    <div class="section-inner story-grid">
+      {content.philosophy.beats.map((beat) => (
+        <article class="meaning-card reveal">
+          <span>{beat.label}</span>
+          <p>{beat.text}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="section-band founder-band" id="founder" aria-labelledby="founder-title">
+    <div class="section-inner founder-statement reveal">
+      <p class="eyebrow-line">{content.founder.eyebrow}</p>
+      <h2 id="founder-title">
+        <span class="founder-title-main">{content.founder.title}</span>
+        <span class="founder-title-sub">{content.founder.lead}</span>
+      </h2>
+
+      <div class="founder-foot">
+        <p>{content.founder.body}</p>
+        <div class="signature">
+          <strong>{content.founder.name}</strong>
+          <span>{content.founder.role}</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-band business-band" id="business" aria-labelledby="business-title">
+    <div class="section-inner">
+      <div class="section-heading narrow reveal">
+        <p class="eyebrow-line">{content.business.eyebrow}</p>
+        <h2 id="business-title">{content.business.title}</h2>
+        <p>{content.business.lead}</p>
+      </div>
+
+      <div class="business-grid">
+        {content.business.areas.map(([no, title, text]) => (
+          <article class="business-card reveal">
+            <span>{no}</span>
+            <h3>{title}</h3>
+            <p>{text}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section-band personnel-band" id="personnel" aria-labelledby="personnel-title">
+    <div class="section-inner split-layout">
+      <div class="section-heading reveal">
+        <p class="eyebrow-line">{content.personnel.eyebrow}</p>
+        <h2 id="personnel-title">{content.personnel.title}</h2>
+        <p>{content.personnel.lead}</p>
+      </div>
+
+      <div class="people-list">
+        {content.personnel.people.map(([name, role, text]) => (
+          <article class="person-row reveal">
+            <div>
+              <strong>{name}</strong>
+              <span>{role}</span>
+            </div>
+            <p>{text}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="contact-section" id="contact" aria-labelledby="contact-title">
+    <div class="section-inner contact-layout">
+      <div class="section-heading reveal">
+        <p class="eyebrow-line">{content.contact.eyebrow}</p>
+        <h2 id="contact-title">{content.contact.title}</h2>
+        <p>{content.contact.lead}</p>
+        <a class="mail-link" href={`mailto:${brand.contactEmail}`}>{brand.contactEmail}</a>
+      </div>
+
+      <form class="contact-form reveal" action="https://api.web3forms.com/submit" method="POST">
+        <input type="hidden" name="access_key" value={brand.web3formsKey} />
+        <input type="hidden" name="subject" value="[Bluestove] New inquiry received" />
+
+        <label>
+          <span>{content.contact.name}</span>
+          <input name="name" autocomplete="name" />
+        </label>
+        <label>
+          <span>{content.contact.email}</span>
+          <input name="email" type="email" autocomplete="email" />
+        </label>
+        <label>
+          <span>{content.contact.message}</span>
+          <textarea name="message" rows="5"></textarea>
+        </label>
+        <button class="button primary" type="submit">{content.contact.submit}</button>
+      </form>
+    </div>
+  </section>
+</div>
+
+<style>
+  :global(body) {
+    background: #05060a;
+  }
+
+  .landing-page {
+    min-height: 100vh;
+    color: var(--bs-offwhite);
+    background:
+      radial-gradient(52% 34% at 50% 8%, rgba(72, 96, 140, 0.24), transparent 72%),
+      radial-gradient(34% 28% at 50% 34%, rgba(232, 71, 43, 0.11), transparent 74%),
+      linear-gradient(180deg, #05060a 0%, #080a10 36%, #05060a 100%);
+  }
+
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 30;
+    display: grid;
+    grid-template-columns: minmax(130px, 1fr) auto minmax(80px, 1fr);
+    align-items: center;
+    min-height: 64px;
+    padding: 15px clamp(20px, 5vw, 64px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(5, 6, 10, 0.74);
+    backdrop-filter: blur(18px);
+  }
+
+  .brand-mark {
+    width: fit-content;
+    font-size: clamp(1.05rem, 1.5vw, 1.24rem);
+    line-height: 1;
+  }
+
+  .brand-mark .w-blue,
+  .brand-mark .w-stove {
+    color: #fff;
+  }
+
+  .main-nav {
+    display: flex;
+    justify-content: center;
+    gap: clamp(18px, 3vw, 36px);
+    color: rgba(235, 241, 248, 0.62);
+    font-size: 0.84rem;
+    font-weight: 650;
+  }
+
+  .main-nav a {
+    transition: color 0.2s var(--bs-ease);
+  }
+
+  .main-nav a:hover {
+    color: #fff;
+  }
+
+  .hero-section {
+    position: relative;
+    min-height: calc(100svh - 64px);
+    display: flex;
+    align-items: start;
+    padding: clamp(48px, 8vh, 96px) clamp(20px, 5vw, 64px) clamp(22px, 4vh, 48px);
+    overflow: hidden;
+    isolation: isolate;
+    background:
+      linear-gradient(180deg, rgba(5, 6, 10, 0.2), rgba(5, 6, 10, 0.92)),
+      #05060a;
+  }
+
+  .hero-section::after {
+    content: '';
+    position: absolute;
+    inset: -18%;
+    z-index: -1;
+    pointer-events: none;
+    background:
+      linear-gradient(rgba(255, 255, 255, 0.018) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.014) 1px, transparent 1px),
+      radial-gradient(60% 48% at 50% 40%, transparent 0 42%, rgba(5, 6, 10, 0.78) 76%);
+    background-size: 44px 44px, 44px 44px, auto;
+    opacity: 0.62;
+  }
+
+  .hero-inner {
+    position: relative;
+    z-index: 1;
+    width: min(1120px, 100%);
+    margin-inline: auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: clamp(34px, 5vw, 56px);
+    align-items: start;
+  }
+
+  .hero-copy {
+    max-width: 840px;
+    margin-inline: auto;
+    text-align: center;
+  }
+
+  .announcement {
+    display: inline-flex;
+    align-items: center;
+    min-height: 30px;
+    padding: 6px 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 999px;
+    color: rgba(235, 241, 248, 0.72);
+    background: rgba(255, 255, 255, 0.035);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+    font-size: 0.74rem;
+    font-weight: 750;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .eyebrow-line {
+    color: rgba(143, 180, 224, 0.86);
+    font-size: 0.74rem;
+    font-weight: 800;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+
+  .hero-copy h1 {
+    margin-top: 22px;
+    color: #fff;
+    font-size: clamp(3.1rem, 8vw, 6.85rem);
+    line-height: 0.98;
+    letter-spacing: 0;
+    font-weight: 760;
+    text-wrap: balance;
+  }
+
+  .hero-lead {
+    margin: 22px auto 0;
+    max-width: 61ch;
+    color: rgba(235, 241, 248, 0.64);
+    font-size: clamp(1rem, 1.7vw, 1.18rem);
+    line-height: 1.68;
+    text-wrap: balance;
+  }
+
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 28px;
+  }
+
+  .button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 42px;
+    padding: 10px 18px;
+    border-radius: 8px;
+    font-size: 0.88rem;
+    font-weight: 750;
+    transition: transform 0.2s var(--bs-ease), background 0.2s var(--bs-ease),
+      border-color 0.2s var(--bs-ease);
+  }
+
+  .button:hover {
+    transform: translateY(-2px);
+  }
+
+  .button.primary {
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    background: rgba(255, 255, 255, 0.94);
+    color: #080a10;
+    box-shadow: 0 14px 38px rgba(0, 0, 0, 0.28);
+  }
+
+  .button.secondary {
+    color: rgba(235, 241, 248, 0.82);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.035);
+  }
+
+  .button.secondary:hover {
+    border-color: rgba(143, 180, 224, 0.5);
+    background: rgba(255, 255, 255, 0.04);
+  }
+
+  .philosophy-strip {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    border-block: 1px solid rgba(255, 255, 255, 0.08);
+    background:
+      radial-gradient(38% 58% at 22% 50%, rgba(232, 71, 43, 0.08), transparent 72%),
+      rgba(255, 255, 255, 0.018);
+  }
+
+  .philosophy-strip::before,
+  .philosophy-strip::after {
+    content: '';
+    position: absolute;
+    inset: -32%;
+    z-index: -1;
+    pointer-events: none;
+  }
+
+  .philosophy-strip::before {
+    background:
+      radial-gradient(36% 44% at 18% 54%, rgba(240, 138, 60, 0.18), transparent 72%),
+      radial-gradient(42% 48% at 76% 38%, rgba(91, 138, 209, 0.16), transparent 76%),
+      radial-gradient(26% 34% at 54% 70%, rgba(232, 71, 43, 0.13), transparent 68%);
+    filter: blur(10px);
+    animation: philosophy-glow 12s ease-in-out infinite alternate;
+  }
+
+  .philosophy-strip::after {
+    background:
+      linear-gradient(115deg, transparent 0 36%, rgba(255, 255, 255, 0.035) 48%, transparent 62%),
+      linear-gradient(180deg, rgba(5, 6, 10, 0.26), rgba(5, 6, 10, 0.72));
+    opacity: 0.5;
+    animation: philosophy-sheen 9s ease-in-out infinite alternate;
+  }
+
+  .section-inner {
+    width: min(1120px, 100%);
+    margin-inline: auto;
+    padding-inline: clamp(20px, 5vw, 72px);
+  }
+
+  .philosophy-inner {
+    display: grid;
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+    gap: clamp(28px, 5vw, 70px);
+    align-items: center;
+    padding-block: clamp(36px, 7vw, 72px);
+  }
+
+  .philosophy-inner h2,
+  .section-heading h2,
+  .contact-section h2 {
+    margin-top: 12px;
+    color: #fff;
+    font-size: clamp(2rem, 5vw, 3.8rem);
+    line-height: 1.08;
+    letter-spacing: 0;
+  }
+
+  .philosophy-text p,
+  .copy-block p,
+  .section-heading p,
+  .business-card p,
+  .person-row p,
+  .contact-section p {
+    color: rgba(230, 239, 250, 0.74);
+    line-height: 1.75;
+  }
+
+  .philosophy-text strong {
+    display: block;
+    margin-top: 20px;
+    color: #ff9a52;
+    font-size: clamp(1.05rem, 2vw, 1.32rem);
+    line-height: 1.5;
+  }
+
+  .section-band {
+    padding-block: clamp(74px, 11vw, 128px);
+  }
+
+  .story-band {
+    background: #05060a;
+  }
+
+  .story-grid,
+  .business-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 14px;
+  }
+
+  .meaning-card,
+  .business-card,
+  .person-row,
+  .contact-form {
+    border: 1px solid rgba(143, 180, 224, 0.16);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.026);
+  }
+
+  .meaning-card {
+    min-height: 180px;
+    padding: 24px;
+  }
+
+  .meaning-card span,
+  .business-card span {
+    color: var(--bs-flame-orange);
+    font-size: 0.78rem;
+    font-weight: 850;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  .meaning-card p {
+    margin-top: 38px;
+    color: rgba(235, 241, 248, 0.66);
+    line-height: 1.7;
+  }
+
+  .founder-band,
+  .personnel-band {
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.018), rgba(255, 255, 255, 0)),
+      #07080d;
+  }
+
+  .founder-statement {
+    display: grid;
+    gap: clamp(28px, 5vw, 64px);
+  }
+
+  .founder-statement h2 {
+    max-width: 1060px;
+    letter-spacing: 0;
+    text-wrap: balance;
+  }
+
+  .founder-title-main,
+  .founder-title-sub {
+    display: block;
+    line-height: 1.08;
+  }
+
+  .founder-title-main {
+    color: #fff;
+    font-size: clamp(2.6rem, 6.8vw, 5.5rem);
+    font-weight: 720;
+  }
+
+  .founder-title-sub {
+    max-width: 920px;
+    margin-top: clamp(14px, 2vw, 24px);
+    color: rgba(235, 241, 248, 0.48);
+    font-size: clamp(1.45rem, 3vw, 2.65rem);
+    font-weight: 700;
+    line-height: 1.18;
+  }
+
+  .founder-foot {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(220px, 0.38fr);
+    gap: clamp(28px, 5vw, 72px);
+    align-items: end;
+  }
+
+  .founder-foot p {
+    max-width: 720px;
+    color: rgba(235, 241, 248, 0.62);
+    font-size: clamp(1rem, 1.6vw, 1.16rem);
+    line-height: 1.75;
+  }
+
+  .split-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 0.88fr) minmax(0, 1.12fr);
+    gap: clamp(32px, 6vw, 80px);
+    align-items: start;
+  }
+
+  .section-heading.narrow {
+    max-width: 700px;
+  }
+
+  .section-heading > p:not(.eyebrow-line) {
+    margin-top: 18px;
+    max-width: 62ch;
+  }
+
+  .copy-block {
+    max-width: 660px;
+  }
+
+  .copy-block .lead-text {
+    color: #fff;
+    font-size: clamp(1.2rem, 2.5vw, 1.75rem);
+    line-height: 1.5;
+  }
+
+  .copy-block p + p {
+    margin-top: 22px;
+  }
+
+  .signature {
+    display: grid;
+    gap: 4px;
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(143, 180, 224, 0.18);
+  }
+
+  .signature strong {
+    color: #fff;
+    font-size: 1.12rem;
+  }
+
+  .signature span {
+    color: var(--bs-steel-blue-soft);
+    font-size: 0.92rem;
+  }
+
+  .business-band {
+    background:
+      radial-gradient(52% 42% at 78% 16%, rgba(91, 138, 209, 0.08), transparent 70%),
+      #05060a;
+  }
+
+  .business-grid {
+    margin-top: 38px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .business-card {
+    min-height: 210px;
+    padding: 24px;
+  }
+
+  .business-card h3 {
+    margin-top: 30px;
+    color: #fff;
+    font-size: clamp(1.28rem, 2.4vw, 1.8rem);
+    line-height: 1.12;
+    letter-spacing: 0;
+  }
+
+  .business-card p {
+    margin-top: 14px;
+  }
+
+  .people-list {
+    display: grid;
+    gap: 12px;
+  }
+
+  .person-row {
+    display: grid;
+    grid-template-columns: minmax(150px, 0.38fr) 1fr;
+    gap: 20px;
+    padding: 20px;
+  }
+
+  .person-row strong,
+  .person-row span {
+    display: block;
+  }
+
+  .person-row strong {
+    color: #fff;
+    font-size: 1.05rem;
+  }
+
+  .person-row span {
+    margin-top: 3px;
+    color: var(--bs-flame-orange);
+    font-size: 0.82rem;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+  }
+
+  .contact-section {
+    padding-block: clamp(76px, 12vw, 150px);
+    background:
+      radial-gradient(48% 52% at 24% 40%, rgba(232, 71, 43, 0.1), transparent 70%),
+      linear-gradient(180deg, #07080d, #05060a);
+  }
+
+  .contact-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 0.92fr) minmax(300px, 0.78fr);
+    gap: clamp(32px, 6vw, 80px);
+    align-items: start;
+  }
+
+  .mail-link {
+    display: inline-flex;
+    margin-top: 26px;
+    color: #ff9a52;
+    font-weight: 800;
+    text-decoration: underline;
+    text-decoration-color: rgba(255, 154, 82, 0.42);
+    text-underline-offset: 6px;
+  }
+
+  .contact-form {
+    display: grid;
+    gap: 18px;
+    padding: 24px;
+  }
+
+  .contact-form label {
+    display: grid;
+    gap: 8px;
+  }
+
+  .contact-form span {
+    color: rgba(230, 239, 250, 0.74);
+    font-size: 0.86rem;
+    font-weight: 750;
+  }
+
+  .contact-form input,
+  .contact-form textarea {
+    width: 100%;
+    border: 1px solid rgba(143, 180, 224, 0.2);
+    border-radius: 8px;
+    background: rgba(2, 8, 16, 0.68);
+    color: #fff;
+    font: inherit;
+    padding: 13px 14px;
+  }
+
+  .contact-form textarea {
+    resize: vertical;
+  }
+
+  .contact-form button {
+    width: fit-content;
+  }
+
+  @keyframes stove-settle {
+    0% {
+      opacity: 0;
+      transform: translateY(-18px) scale(0.98);
+    }
+    45% {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+    64% {
+      transform: translateY(-5px) scale(1);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+
+  @keyframes philosophy-glow {
+    0% {
+      opacity: 0.52;
+      transform: translate3d(-2%, 1%, 0) scale(1);
+    }
+    100% {
+      opacity: 0.92;
+      transform: translate3d(2%, -1%, 0) scale(1.06);
+    }
+  }
+
+  @keyframes philosophy-sheen {
+    0% {
+      transform: translateX(-4%);
+    }
+    100% {
+      transform: translateX(4%);
+    }
+  }
+
+  @media (max-width: 900px) {
+    .site-header {
+      grid-template-columns: 1fr auto;
+      row-gap: 14px;
+    }
+
+    .main-nav {
+      grid-column: 1 / -1;
+      justify-content: flex-start;
+      overflow-x: auto;
+      padding-bottom: 2px;
+    }
+
+    .hero-section {
+      min-height: auto;
+      padding-top: 36px;
+    }
+
+    .hero-inner,
+    .philosophy-inner,
+    .founder-foot,
+    .split-layout,
+    .contact-layout {
+      grid-template-columns: 1fr;
+    }
+
+    .story-grid,
+    .business-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 540px) {
+    .site-header {
+      min-height: 64px;
+      padding-block: 16px;
+    }
+
+    .hero-section {
+      padding-top: 42px;
+      padding-bottom: 24px;
+    }
+
+    .hero-inner {
+      gap: 30px;
+    }
+
+    .main-nav {
+      display: none;
+    }
+
+    .hero-copy h1 {
+      margin-top: 16px;
+      font-size: clamp(2.55rem, 12.6vw, 3.1rem);
+      line-height: 1.02;
+    }
+
+    .hero-lead {
+      margin-top: 16px;
+      font-size: 0.93rem;
+      line-height: 1.58;
+    }
+
+    .hero-actions {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      margin-top: 18px;
+      gap: 10px;
+    }
+
+    .button,
+    .contact-form button {
+      width: 100%;
+      min-height: 42px;
+      padding-inline: 12px;
+      font-size: 0.82rem;
+      line-height: 1.16;
+    }
+
+    .founder-title-main {
+      font-size: clamp(2.1rem, 11vw, 3.25rem);
+    }
+
+    .founder-title-sub {
+      font-size: clamp(1.35rem, 6vw, 1.9rem);
+    }
+
+    .founder-foot {
+      gap: 22px;
+    }
+
+    .person-row {
+      grid-template-columns: 1fr;
+    }
+
+    .meaning-card,
+    .business-card,
+    .contact-form {
+      padding: 20px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .philosophy-strip::before,
+    .philosophy-strip::after,
+    .button,
+    .main-nav a {
+      animation: none;
+      transition: none;
+    }
+  }
+</style>

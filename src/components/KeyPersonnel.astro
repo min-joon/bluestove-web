@@ -1,0 +1,98 @@
+---
+import { ui, type Lang } from '../i18n/ui';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const t = ui[lang].personnel;
+
+const initial = (name: string, tbd?: boolean) => (tbd ? '?' : Array.from(name)[0]);
+---
+
+<section class="section personnel" id="personnel">
+  <div class="container">
+    <div class="ppl-head reveal">
+      <p class="eyebrow">{t.eyebrow}</p>
+      <h2 class="section-title">{t.title}</h2>
+      <p class="section-lead">{t.lead}</p>
+    </div>
+
+    <ul class="ppl-grid">
+      {
+        t.people.map((p) => (
+          <li class="ppl-card reveal">
+            <div class="ppl-avatar" aria-hidden="true">{initial(p.name, p.tbd)}</div>
+            <p class="ppl-name">{p.name}</p>
+            <p class="ppl-role">{p.role}</p>
+            <p class="ppl-bio">{p.bio}</p>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>
+
+<style>
+  .ppl-head {
+    margin-bottom: clamp(36px, 5vw, 56px);
+  }
+  .ppl-grid {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+  }
+  .ppl-card {
+    padding: 32px 28px;
+    background: var(--bs-card);
+    border: 1px solid var(--bs-line);
+    border-radius: var(--bs-radius-lg);
+    text-align: center;
+    transition: transform 0.3s var(--bs-ease), border-color 0.3s;
+  }
+  .ppl-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(91, 138, 209, 0.4);
+  }
+  .ppl-avatar {
+    width: 72px;
+    height: 72px;
+    margin: 0 auto 18px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    font-size: 1.7rem;
+    font-weight: 700;
+    color: var(--bs-offwhite);
+    background: linear-gradient(135deg, var(--bs-navy), var(--bs-steel-blue));
+    border: 1px solid var(--bs-line);
+  }
+  .ppl-name {
+    font-size: 1.18rem;
+    font-weight: 700;
+  }
+  .ppl-role {
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--bs-flame-orange);
+    margin-top: 4px;
+  }
+  .ppl-bio {
+    margin-top: 14px;
+    color: var(--bs-muted);
+    font-size: 0.94rem;
+  }
+
+  @media (max-width: 900px) {
+    .ppl-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (max-width: 560px) {
+    .ppl-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

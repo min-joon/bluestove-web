@@ -1,0 +1,132 @@
+@import './tokens.css';
+
+/* Pretendard — Korean + Latin, variable. Loaded from jsDelivr CDN (woff2). */
+@font-face {
+  font-family: 'Pretendard';
+  font-weight: 45 920;
+  font-style: normal;
+  font-display: swap;
+  src: url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/woff2/PretendardVariable.woff2')
+    format('woff2-variations');
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 84px; /* offset for sticky nav on anchor jumps */
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--bs-font-sans);
+  background: var(--bs-navy-deep);
+  color: var(--bs-offwhite);
+  line-height: 1.7;
+  letter-spacing: -0.01em;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  min-height: 100vh;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+  color: inherit;
+}
+
+/* Layout helpers */
+.container {
+  width: 100%;
+  max-width: var(--bs-maxw);
+  margin-inline: auto;
+  padding-inline: var(--bs-gutter);
+}
+
+.section {
+  padding-block: var(--bs-section-y);
+  position: relative;
+}
+
+.eyebrow {
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--bs-flame-orange);
+}
+
+.section-title {
+  font-size: clamp(1.8rem, 4vw, 2.9rem);
+  font-weight: 700;
+  line-height: 1.18;
+  letter-spacing: -0.02em;
+  margin-top: 14px;
+}
+
+.section-lead {
+  margin-top: 18px;
+  max-width: 60ch;
+  color: var(--bs-muted-strong);
+  font-size: clamp(1rem, 1.6vw, 1.12rem);
+}
+
+/* Wordmark — brand color-split rule from the business-card guide */
+.wordmark {
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+.wordmark .w-blue {
+  color: var(--bs-flame-orange);
+}
+.wordmark .w-stove {
+  color: var(--bs-steel-blue);
+}
+
+/* Reveal-on-scroll (progressive enhancement; visible by default if JS off) */
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.7s var(--bs-ease), transform 0.7s var(--bs-ease);
+  will-change: opacity, transform;
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+:focus-visible {
+  outline: 2px solid var(--bs-steel-blue);
+  outline-offset: 3px;
+  border-radius: 4px;
+}

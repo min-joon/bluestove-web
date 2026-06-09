@@ -1,0 +1,68 @@
+---
+import { ui, brand, type Lang } from '../i18n/ui';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const t = ui[lang].footer;
+const year = new Date().getFullYear();
+---
+
+<footer class="footer">
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <span class="wordmark"><span class="w-blue">Blue</span><span class="w-stove">stove</span></span>
+      <p>{brand.scope}</p>
+    </div>
+    <p class="footer-slogan">{brand.slogan1} {brand.slogan2}</p>
+  </div>
+  <div class="container footer-bottom">
+    <p>© {year} Bluestove. {t.rights}</p>
+    <p>{brand.motto}.</p>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    background: var(--bs-navy-darker);
+    border-top: 1px solid var(--bs-line);
+    padding-block: 48px 28px;
+  }
+  .footer-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  .footer-brand .wordmark {
+    font-size: 1.4rem;
+  }
+  .footer-brand p {
+    margin-top: 6px;
+    color: var(--bs-muted);
+    font-size: 0.9rem;
+  }
+  .footer-slogan {
+    font-style: italic;
+    color: var(--bs-steel-blue-soft);
+  }
+  .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 32px;
+    padding-top: 20px;
+    border-top: 1px solid var(--bs-line);
+    color: var(--bs-muted);
+    font-size: 0.84rem;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  @media (max-width: 560px) {
+    .footer-inner {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+</style>

@@ -1,0 +1,40 @@
+/* Bluestove design tokens — derived from the 260609 branding guide.
+   Color rule from the brief: deep navy frame, flame is red/orange (never plain yellow). */
+:root {
+  /* Brand core */
+  --bs-navy: #1a365d;          /* 창조 명함 짙은 블루 — frame / primary surface */
+  --bs-navy-deep: #0f2440;     /* deeper background wells */
+  --bs-navy-darker: #0a1a30;   /* near-black navy for sticky nav / footer */
+  --bs-steel-blue: #5b8ad1;    /* 'stove' wordmark — brighter than the ground */
+  --bs-steel-blue-soft: #8fb4e0;
+
+  /* Flame — combustion energy, red-led with orange gamic */
+  --bs-flame: #e8472b;
+  --bs-flame-orange: #f08a3c;
+  --bs-flame-glow: rgba(232, 71, 43, 0.45);
+
+  /* Neutrals */
+  --bs-offwhite: #f4f7fb;
+  --bs-ink: #0c1622;
+  --bs-muted: #9bb0c9;         /* secondary text on dark */
+  --bs-muted-strong: #c4d2e4;
+  --bs-line: rgba(143, 180, 224, 0.16);
+  --bs-card: rgba(255, 255, 255, 0.03);
+  --bs-card-hover: rgba(91, 138, 209, 0.08);
+
+  /* Typography */
+  --bs-font-sans: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    'Malgun Gothic', system-ui, sans-serif;
+  --bs-font-display: 'Pretendard', system-ui, sans-serif;
+
+  /* Spacing / layout */
+  --bs-maxw: 1120px;
+  --bs-gutter: clamp(20px, 5vw, 64px);
+  --bs-section-y: clamp(72px, 12vh, 140px);
+  --bs-radius: 14px;
+  --bs-radius-lg: 22px;
+
+  /* Motion */
+  --bs-ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --bs-dur: 0.5s;
+}

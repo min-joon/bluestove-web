@@ -1,0 +1,173 @@
+---
+import { ui, type Lang } from '../i18n/ui';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const t = ui[lang];
+
+const links = [
+  { href: '#founder', label: t.nav.founder },
+  { href: '#business', label: t.nav.business },
+  { href: '#personnel', label: t.nav.personnel },
+  { href: '#contact', label: t.nav.contact },
+];
+---
+
+<header class="nav">
+  <div class="container nav-inner">
+    <a href="#top" class="brand wordmark" aria-label="Bluestove">
+      <span class="w-blue">Blue</span><span class="w-stove">stove</span>
+    </a>
+
+    <div class="nav-right">
+      <nav class="nav-links" aria-label={t.nav.founder}>
+        {links.map((l) => <a href={l.href}>{l.label}</a>)}
+      </nav>
+
+      <!-- English-only launch: Korean copy remains in source for possible future
+        reuse, but /ko/ is intentionally not exposed. Restore the EN/KO switcher
+        only together with src/pages/[lang]/index.astro static path generation. -->
+
+      <button class="nav-toggle" aria-label="Menu" aria-expanded="false" aria-controls="mobile-menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+
+  <div class="mobile-menu" id="mobile-menu" hidden>
+    {links.map((l) => <a href={l.href}>{l.label}</a>)}
+  </div>
+</header>
+
+<script>
+  const toggle = document.querySelector<HTMLButtonElement>('.nav-toggle');
+  const menu = document.querySelector<HTMLElement>('#mobile-menu');
+  const header = document.querySelector<HTMLElement>('.nav');
+
+  if (toggle && menu) {
+    const setOpen = (open: boolean) => {
+      menu.hidden = !open;
+      toggle.setAttribute('aria-expanded', String(open));
+      toggle.classList.toggle('is-open', open);
+    };
+    toggle.addEventListener('click', () => setOpen(menu.hidden));
+    menu.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => setOpen(false)));
+  }
+
+  if (header) {
+    const onScroll = () => header.classList.toggle('is-scrolled', window.scrollY > 24);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+  }
+</script>
+
+<style>
+  .nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    transition: background var(--bs-dur) var(--bs-ease), border-color var(--bs-dur);
+    border-bottom: 1px solid transparent;
+  }
+  .nav.is-scrolled {
+    background: rgba(10, 26, 48, 0.82);
+    backdrop-filter: blur(12px);
+    border-bottom-color: var(--bs-line);
+  }
+  .nav-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 68px;
+  }
+  .brand {
+    font-size: 1.32rem;
+  }
+  .nav-right {
+    display: flex;
+    align-items: center;
+    gap: clamp(16px, 2.6vw, 32px);
+  }
+  .nav-links {
+    display: flex;
+    gap: clamp(18px, 3vw, 40px);
+    font-size: 0.95rem;
+    font-weight: 500;
+  }
+  .nav-links a {
+    color: var(--bs-muted-strong);
+    position: relative;
+    padding: 6px 0;
+    transition: color 0.25s var(--bs-ease);
+  }
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 2px;
+    background: var(--bs-flame-orange);
+    transition: width 0.28s var(--bs-ease);
+  }
+  .nav-links a:hover {
+    color: var(--bs-offwhite);
+  }
+  .nav-links a:hover::after {
+    width: 100%;
+  }
+  .nav-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    padding: 8px;
+  }
+  .nav-toggle span {
+    width: 24px;
+    height: 2px;
+    background: var(--bs-offwhite);
+    border-radius: 2px;
+    transition: transform 0.3s var(--bs-ease), opacity 0.3s;
+  }
+  .nav-toggle.is-open span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+  .nav-toggle.is-open span:nth-child(2) {
+    opacity: 0;
+  }
+  .nav-toggle.is-open span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+
+  /* [hidden] must win over display:flex, else the menu shows on desktop too */
+  .mobile-menu[hidden] {
+    display: none;
+  }
+  .mobile-menu {
+    display: flex;
+    flex-direction: column;
+    background: rgba(10, 26, 48, 0.96);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--bs-line);
+    padding: 8px var(--bs-gutter) 18px;
+  }
+  .mobile-menu a {
+    padding: 14px 0;
+    font-size: 1.05rem;
+    border-bottom: 1px solid var(--bs-line);
+    color: var(--bs-muted-strong);
+  }
+  .mobile-menu a:last-child {
+    border-bottom: none;
+  }
+  @media (max-width: 760px) {
+    .nav-links {
+      display: none;
+    }
+    .nav-toggle {
+      display: flex;
+    }
+  }
+</style>
