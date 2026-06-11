@@ -1,46 +1,37 @@
 ---
+// English-only document shell for the single-page landing at "/".
 import '../styles/global.css';
-import { ui, type Lang } from '../i18n/ui';
+import { brand } from '../brand';
 
-interface Props {
-  lang: Lang;
-}
-
-const { lang } = Astro.props;
-const t = ui[lang];
+const title = `Bluestove — ${brand.slogan.replace(/\.$/, '')}`;
+const description =
+  'Bluestove is an operating company built around AI data centre project management and deal sponsoring, expanding toward future technology infrastructure and space-related investment.';
 
 const site = Astro.site?.toString().replace(/\/$/, '') ?? '';
-const canonical = `${site}/${lang}/`;
+const canonical = `${site}/`;
 ---
 
 <!doctype html>
-<html lang={t.htmlLang}>
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="generator" content={Astro.generator} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
-    <title>{t.meta.title}</title>
-    <meta name="description" content={t.meta.description} />
-
+    <title>{title}</title>
+    <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
-    <link rel="alternate" hreflang="en" href={`${site}/en/`} />
-    <!-- Korean copy is retained in source, but /ko/ is intentionally not
-      generated/exposed for now. Re-add hreflang="ko" only when /ko/ routing
-      and the language switcher are restored together. -->
-    <link rel="alternate" hreflang="x-default" href={`${site}/en/`} />
 
-    <!-- Open Graph -->
     <meta property="og:type" content="website" />
-    <meta property="og:title" content={t.meta.title} />
-    <meta property="og:description" content={t.meta.description} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
-    <meta property="og:locale" content={t.ogLocale} />
-    <meta name="theme-color" content="#0f2440" />
+    <meta property="og:locale" content="en_US" />
+    <meta name="theme-color" content="#05060a" />
   </head>
   <body>
-    <a class="skip-link" href="#main">{t.skip}</a>
+    <a class="skip-link" href="#main">Skip to content</a>
     <slot />
 
     <script>
