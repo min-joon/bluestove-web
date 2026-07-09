@@ -3,9 +3,11 @@
 // than using Astro's static redirect page, which can display redirect copy on
 // some static hosts.
 import Base from '../../layouts/Base.astro';
-import BluestoveLanding from '../../components/BluestoveLanding.astro';
+import DesigningPlaceholder from '../../components/DesigningPlaceholder.astro';
+// The full landing (BluestoveLanding.astro) is preserved for later; while the
+// site is being designed we serve the in-progress placeholder instead.
 ---
 
 <Base>
-  <BluestoveLanding />
+  <DesigningPlaceholder />
 </Base>

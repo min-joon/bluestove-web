@@ -4,9 +4,11 @@
 // swaps dist/index.html and strips the bundle when SITE_WIP=true), so this
 // page stays a plain landing entry with no conditional rendering.
 import Base from '../layouts/Base.astro';
-import BluestoveLanding from '../components/BluestoveLanding.astro';
+import DesigningPlaceholder from '../components/DesigningPlaceholder.astro';
+// The full landing (BluestoveLanding.astro) is preserved for later; while the
+// site is being designed we serve the in-progress placeholder instead.
 ---
 
 <Base>
-  <BluestoveLanding />
+  <DesigningPlaceholder />
 </Base>

@@ -1,0 +1,112 @@
+---
+// Full-screen "in designing" placeholder shown while the real site is being
+// built. One centered column: the light-version stove mark, the BLUESTOVE
+// wordmark, and a quiet status line. Assets live in /public.
+//   - /stove-icon.svg        light (navy-on-white) stove mark, cropped from the master logo
+//   - /bluestove-wordmark.png BLUESTOVE wordmark, vertical whitespace trimmed
+---
+
+<main id="main" class="designing" aria-label="Bluestove — site in progress">
+  <div class="stack">
+    <img
+      class="mark"
+      src="/stove-icon.svg"
+      width="152"
+      height="337"
+      alt="Bluestove stove mark"
+      decoding="async"
+    />
+    <img
+      class="wordmark"
+      src="/bluestove-wordmark.png"
+      width="5000"
+      height="820"
+      alt="Bluestove"
+    />
+    <p class="status">In&nbsp;Designing<span class="dots" aria-hidden="true">…</span></p>
+  </div>
+</main>
+
+<style>
+  .designing {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: #ffffff;
+    padding: 6vh 24px;
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+
+  .stack {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: clamp(28px, 5vh, 60px);
+    animation: rise 0.9s var(--bs-ease) both;
+  }
+
+  .mark {
+    height: clamp(200px, 42vh, 460px);
+    width: auto;
+    display: block;
+  }
+
+  .wordmark {
+    width: clamp(280px, 62vw, 640px);
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .status {
+    margin: clamp(6px, 2vh, 22px) 0 0;
+    font-family: var(--bs-font-sans);
+    font-size: clamp(19px, 2.8vw, 32px);
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    color: #143068;
+    animation: colorPulse 1.9s ease-in-out infinite;
+  }
+
+  .dots {
+    display: inline-block;
+    margin-left: 0.15em;
+  }
+
+  @keyframes rise {
+    from {
+      opacity: 0;
+      transform: translateY(14px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  /* Whole "In Designing …" fades between a faded tint and the logo navy. */
+  @keyframes colorPulse {
+    0%,
+    100% {
+      color: #a8b7d1;
+    }
+    50% {
+      color: #143068;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .stack {
+      animation: none;
+    }
+    .status {
+      animation: none;
+      color: #5b6f92;
+    }
+  }
+</style>
