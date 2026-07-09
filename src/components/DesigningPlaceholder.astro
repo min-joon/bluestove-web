@@ -4,9 +4,56 @@
 // wordmark, and a quiet status line. Assets live in /public.
 //   - /stove-icon.svg        light (navy-on-white) stove mark, cropped from the master logo
 //   - /bluestove-wordmark.png BLUESTOVE wordmark, vertical whitespace trimmed
+//
+// Background carries the name: navy "starlight" (echoing the compass star in
+// the mark) scattered across the top and sides, and an orange "stove flame"
+// flickering up from the bottom. Star positions steer clear of the central
+// column so the logo stays clean. [x%, y%, size px]
+const stars = [
+  [12, 8, 16], [24, 5, 10], [38, 9, 11], [50, 3, 18], [62, 8, 12],
+  [76, 6, 14], [88, 10, 9], [30, 15, 8], [70, 14, 9], [6, 14, 9],
+  [18, 19, 8], [32, 22, 7], [68, 21, 7], [82, 19, 8],
+  [7, 24, 12], [16, 40, 9], [9, 56, 14], [20, 68, 10], [13, 82, 11],
+  [5, 38, 9], [24, 54, 8],
+  [93, 26, 12], [84, 42, 9], [91, 58, 15], [80, 69, 10], [87, 84, 11],
+  [96, 40, 8], [78, 55, 9],
+];
+// Flame tongues clustered at the base — several overlapping tongues plus a
+// wide low bed so they read as a fire, not separate streaks. [left%, w, h] px
+const flames = [
+  [50, 1000, 140], [50, 600, 230], [41, 420, 190], [59, 414, 196],
+  [34, 320, 150], [66, 306, 156], [46, 360, 176], [55, 348, 168],
+];
 ---
 
 <main id="main" class="designing" aria-label="Bluestove — site in progress">
+  <div class="sky" aria-hidden="true">
+    {
+      stars.map(([x, y, s], i) => (
+        <span
+          class="star"
+          style={`left:${x}%;top:${y}%;width:${s}px;height:${s}px;animation-delay:${(
+            (i * 0.41) %
+            3.2
+          ).toFixed(2)}s;animation-duration:${(2.8 + (i % 5) * 0.5).toFixed(2)}s`}
+        />
+      ))
+    }
+  </div>
+
+  <div class="fire" aria-hidden="true">
+    {
+      flames.map(([x, w, h], i) => (
+        <span
+          class="flame"
+          style={`left:${x}%;width:${w}px;height:${h}px;animation-delay:${(
+            i * 0.33
+          ).toFixed(2)}s;animation-duration:${(2.2 + (i % 3) * 0.6).toFixed(2)}s`}
+        />
+      ))
+    }
+  </div>
+
   <div class="stack">
     <img
       class="mark"
@@ -35,13 +82,116 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background: #ffffff;
     padding: 6vh 24px;
     box-sizing: border-box;
     overflow: hidden;
+    /* "Blue Stove": a cool navy night up top, a light readable core, and the
+       warm glow of the stove rising from below. */
+    background:
+      radial-gradient(
+        76% 44% at 50% 120%,
+        rgba(224, 108, 44, 0.15),
+        rgba(224, 108, 44, 0) 60%
+      ),
+      radial-gradient(
+        44% 42% at 13% 15%,
+        rgba(20, 48, 104, 0.13),
+        rgba(20, 48, 104, 0) 70%
+      ),
+      radial-gradient(
+        46% 44% at 88% 20%,
+        rgba(26, 58, 114, 0.12),
+        rgba(26, 58, 114, 0) 70%
+      ),
+      radial-gradient(
+        60% 40% at 50% 62%,
+        rgba(31, 66, 128, 0.06),
+        rgba(31, 66, 128, 0) 72%
+      ),
+      radial-gradient(
+        92% 62% at 50% -18%,
+        rgba(20, 48, 104, 0.22),
+        rgba(20, 48, 104, 0) 62%
+      ),
+      linear-gradient(180deg, #e5ebf7 0%, #fafcfe 48%, #fdf3ea 100%);
+  }
+
+  /* ---- Navy starlight (compass-star twinkle) ---- */
+  .sky {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  .star {
+    position: absolute;
+    display: block;
+    background: #1a3a72;
+    /* four-point sparkle echoing the mark's compass star */
+    clip-path: polygon(
+      50% 0%,
+      60% 40%,
+      100% 50%,
+      60% 60%,
+      50% 100%,
+      40% 60%,
+      0% 50%,
+      40% 40%
+    );
+    opacity: 0.2;
+    transform: scale(0.6);
+    animation-name: twinkle;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+
+  /* ---- Orange stove flame ---- */
+  .fire {
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    width: min(108vw, 760px);
+    height: min(52vh, 420px);
+    transform: translateX(-50%);
+    z-index: 0;
+    pointer-events: none;
+    filter: blur(9px);
+  }
+
+  /* Warm bed of light unifying the base of the flames. */
+  .fire::after {
+    content: '';
+    position: absolute;
+    inset: auto 0 -8% 0;
+    height: 46%;
+    background: radial-gradient(
+      70% 100% at 50% 100%,
+      rgba(230, 120, 48, 0.3),
+      rgba(230, 120, 48, 0) 72%
+    );
+  }
+
+  .flame {
+    position: absolute;
+    bottom: -4%;
+    transform: translateX(-50%);
+    transform-origin: 50% 100%;
+    background: linear-gradient(
+      to top,
+      rgba(216, 60, 24, 0.5),
+      rgba(238, 132, 58, 0.42) 45%,
+      rgba(240, 160, 70, 0) 100%
+    );
+    clip-path: polygon(50% 0%, 78% 34%, 72% 100%, 28% 100%, 22% 34%);
+    animation-name: flicker;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
   }
 
   .stack {
+    position: relative;
+    z-index: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -89,6 +239,40 @@
     }
   }
 
+  /* Stars breathe like distant light. */
+  @keyframes twinkle {
+    0%,
+    100% {
+      opacity: 0.12;
+      transform: scale(0.55);
+    }
+    50% {
+      opacity: 0.85;
+      transform: scale(1);
+    }
+  }
+
+  /* Flames sway and pulse from their base. */
+  @keyframes flicker {
+    0%,
+    100% {
+      transform: translateX(-50%) translateY(0) scaleY(1) scaleX(1);
+      opacity: 0.55;
+    }
+    25% {
+      transform: translateX(-51%) translateY(-3%) scaleY(1.1) scaleX(0.95);
+      opacity: 0.8;
+    }
+    50% {
+      transform: translateX(-49%) translateY(-1%) scaleY(0.94) scaleX(1.04);
+      opacity: 0.5;
+    }
+    75% {
+      transform: translateX(-50.5%) translateY(-4%) scaleY(1.14) scaleX(0.92);
+      opacity: 0.85;
+    }
+  }
+
   /* Whole "In Designing …" fades between a faded tint and the logo navy. */
   @keyframes colorPulse {
     0%,
@@ -103,6 +287,16 @@
   @media (prefers-reduced-motion: reduce) {
     .stack {
       animation: none;
+    }
+    .star {
+      animation: none;
+      opacity: 0.5;
+      transform: scale(0.85);
+    }
+    .flame {
+      animation: none;
+      transform: translateX(-50%);
+      opacity: 0.6;
     }
     .status {
       animation: none;
